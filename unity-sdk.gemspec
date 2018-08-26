@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
       "lib/unity-sdk/client.rb",
       "lib/unity-sdk.rb",
       "lib/unity-sdk/helpers/instance_helper.rb",
+      "lib/unity-sdk/helpers/enumerations.rb",
       "lib/unity-sdk/helpers/lun_helper.rb",
       "lib/unity-sdk/helpers/disk_helper.rb",
       "lib/unity-sdk/helpers/host_helper.rb",
@@ -19,7 +20,7 @@ Gem::Specification.new do |spec|
       "lib/unity-sdk/helpers/snmp_helper.rb",
       "lib/unity-sdk/helpers/dns_helper.rb",
       "lib/unity-sdk/helpers/ntp_helper.rb",
-      "lib/unity-sdk/helpers/basic_system_info_helper.rb"
+      "lib/unity-sdk/helpers/basic_system_info_helper.rb",
   ]
   spec.license       = 'MIT'
 
