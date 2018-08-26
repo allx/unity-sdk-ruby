@@ -27,6 +27,24 @@ HostLUN_Type_Enum = {
     2 => 'LUN_Snap'
 }
 
+Tier_Type_Enum = {
+    0 => 'None',
+    10 => 'Extreme_Performance',
+    20 => 'Performance',
+    30 => 'Capacity'
+}
+
+Disk_Technology_Enum = {
+    1 => 'SAS',
+    2 => 'NL_SAS',
+    6 => 'SAS_FLASH_2',
+    7 => 'SAS_FLASH_3',
+    8 => 'SAS_FLASH_4',
+    9 => 'SAS_FLASH_5',
+    50 => 'Mixed',
+    99 => 'Virtual'
+}
+
 Host_Type_Enum = {
     0 => 'Unknown',
     1 => 'HostManual',

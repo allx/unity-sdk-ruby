@@ -1,3 +1,5 @@
+require_relative 'enumerations'
+
 module UNITY_SDK
     module DiskHelper
         DISK_QUERY_FIELDS = [
@@ -35,8 +37,14 @@ module UNITY_SDK
         ]
         DISK_QUERY_FIELDS_STR = DISK_QUERY_FIELDS.join(',')
 
+        DISK_JSON_MAPS = {
+            'health' => {'value' => Health_Enum},
+            'tierType' => Tier_Type_Enum,
+            'diskTechnology' => Disk_Technology_Enum
+        }
+
         def get_disk(id = nil, fields = DISK_QUERY_FIELDS_STR)
-            return get_instance('disk', fields, id)
+            return get_instance('disk', fields, id, DISK_JSON_MAPS)
         end
     end
 end
