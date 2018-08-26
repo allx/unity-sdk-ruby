@@ -23,6 +23,7 @@ module UNITY_SDK
         include HostHelper
         include HostLUNHelper
         include SnmpHelper
+        include DnsHelper
 
     end
 end
