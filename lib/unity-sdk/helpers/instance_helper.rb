@@ -21,7 +21,7 @@ module UNITY_SDK
             if id
                 response = rest_get("/api/instances/#{type}/#{id}?fields=#{fields}")
                 json = response_handler(response)['content']
-                apply_value_map(json, value_map)
+                apply_value_map(json, value_map) if value_map
                 return json
             else
                 response = rest_get("/api/types/#{type}/instances?fields=#{fields}")
@@ -30,7 +30,7 @@ module UNITY_SDK
                 items = Array.new
                 entries.each do |entry|
                     json = entry['content']
-                    apply_value_map(json, value_map)
+                    apply_value_map(json, value_map) if value_map
                     items.push(json)
                 end
                 return items 
