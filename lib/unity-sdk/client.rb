@@ -29,18 +29,9 @@ module UNITY_SDK
             @options['X-EMC-REST-CLIENT'] ||= 'true'
         end
 
-        def get_disks
-            response = rest_get('/api/types/disk/instances/')
-            entries = response_handler(response)['entries']
-
-            disks = Array.new
-            entries.each do |entry|
-                disks.push(entry['content']['id'])
-            end
-            disks
-        end
-
         include LUNQueryHelper
+        include DiskHelper
+
         private
 
         def response_handler(response)
