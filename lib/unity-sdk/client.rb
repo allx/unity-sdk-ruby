@@ -1,5 +1,6 @@
 require 'uri'
 require 'json'
+require 'logger'
 require 'openssl'
 require 'net/http'
 
@@ -7,9 +8,16 @@ module UNITY_SDK
     class Client
         def initialize(options = {})
             options = Hash[options.map { |k, v|  [k.to_sym, v] }]
+            @log_level = options[:log_level] || :warn
+            @logger = options[:logger] || Logger.new(STDOUT)
+            @logger.level = @logger.class.const_get(@log_level.upcase)
+
             @host = options[:host] || ENV['UNITY_HOST']
+            raise "missing host" unless @host
             @user = options[:user] || ENV['UNITY_USER']
+            raise "missing user" unless @user
             @password = options[:password] || ENV['UNITY_PASSWORD']
+            raise "missing password" unless @password
 
             @host = 'https://' + @host unless @host.start_with?('http://', 'https://')
 
@@ -21,12 +29,28 @@ module UNITY_SDK
 
         def get_luns
             response = rest_get('/api/types/lun/instances/')
-            JSON.parse(response.body)
+            response_handler(response)
         end
 
         def get_disks
             response = rest_get('/api/types/disk/instances/')
-            JSON.parse(response.body)
+            response_handler(response)
+        end
+
+        private
+
+        def response_handler(response)
+            case response
+            when Net::HTTPSuccess then
+                begin
+                    return JSON.parse(response.body)
+                rescue JSON::ParserError => e
+                    @logger.warn "cannot parse JSON response:\n #{e}"
+                    return response.body
+                end
+            else
+                @logger.warn "cannot handle response (#{response.code}):\n#{response.body}"
+            end
         end
 
         def rest_get(path)
@@ -37,7 +61,10 @@ module UNITY_SDK
             http.verify_mode = OpenSSL::SSL::VERIFY_NONE
             cookie = nil 
 
-            while true do
+            redirect_remain = 10
+            while redirect_remain > 0 do
+
+                redirect_remain -= 1
 
                 request = Net::HTTP::Get.new(uri.request_uri)
                 @options.each do |key, val|
@@ -53,11 +80,12 @@ module UNITY_SDK
                     uri = URI.parse(response.header['location'])
                     cookie = response.header['set-cookie'] if response.header.key?('set-cookie')
                 else
-                    break
+                    return response
                 end
 
             end
-            response
+            @logger.warn("#{path} exceeded max redirection")
+            nil
         end
     end
 end
