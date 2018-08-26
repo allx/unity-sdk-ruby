@@ -27,3 +27,23 @@ HostLUN_Type_Enum = {
     2 => 'LUN_Snap'
 }
 
+Host_Type_Enum = {
+    0 => 'Unknown',
+    1 => 'HostManual',
+    2 => 'Subnet',
+    3 => 'NetGroup',
+    4 => 'RPA',
+    5 => 'HostAuto'
+}
+
+Host_Manage_Enum = {
+    0 => 'UNKNOWN',
+    1 => 'VMWARE',
+    2 => 'OTHERS'
+}
+
+Host_Registration_Type_Enum = {
+    0 => 'UNKNOWN',
+    1 => 'MANUAL',
+    2 => 'EXSAUTO'
+}

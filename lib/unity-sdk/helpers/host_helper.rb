@@ -1,3 +1,5 @@
+require_relative 'enumerations'
+
 module UNITY_SDK
     module HostHelper
         HOST_QUERY_FIELDS = [
@@ -26,8 +28,15 @@ module UNITY_SDK
         ]
         HOST_QUERY_FIELDS_STR = HOST_QUERY_FIELDS.join(',')
 
+        HOST_JSON_MAPS = {
+            'type' => Host_Type_Enum,
+            'health' => {'value' => Health_Enum},
+            'autoManageType' => Host_Manage_Enum,
+            'registrationType' => Host_Registration_Type_Enum
+        }
+
         def get_host(id = nil, fields = HOST_QUERY_FIELDS_STR)
-            return get_instance('host', fields, id)
+            return get_instance('host', fields, id, HOST_JSON_MAPS)
         end
     end
 end
