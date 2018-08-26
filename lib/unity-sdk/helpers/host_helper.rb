@@ -26,23 +26,8 @@ module UNITY_SDK
         ]
         HOST_QUERY_FIELDS_STR = HOST_QUERY_FIELDS.join(',')
 
-        def get_hosts
-            response = rest_get('/api/types/host/instances/')
-            entries = response_handler(response)['entries']
-
-            hosts = Array.new
-            entries.each do |entry|
-                hosts.push(entry['content']['id'])
-            end
-            hosts
+        def get_host(id = nil, fields = HOST_QUERY_FIELDS_STR)
+            return get_instance('host', fields, id)
         end
-
-        def get_host(id)
-            response = rest_get("/api/instances/host/#{id}?fields=#{HOST_QUERY_FIELDS_STR}")
-            response_handler(response)['content']
-        end
-
-
-
     end
 end

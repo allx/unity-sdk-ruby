@@ -31,21 +31,8 @@ module UNITY_SDK
         ]
         LUN_QUERY_FIELDS_STR = LUN_QUERY_FIELDS.join(',')
 
-        def get_luns
-            response = rest_get('/api/types/lun/instances/')
-            entries = response_handler(response)['entries']
-
-            luns = Array.new
-            entries.each do |entry|
-                luns.push(entry['content']['id'])
-            end
-            luns
+        def get_lun(id = nil, fields = LUN_QUERY_FIELDS_STR)
+            return get_instance('lun', fields, id)
         end
-
-        def get_lun(id)
-            response = rest_get("/api/instances/lun/#{id}?fields=#{LUN_QUERY_FIELDS_STR}")
-            response_handler(response)['content']
-        end
-
     end
 end

@@ -4,7 +4,7 @@ require 'logger'
 require 'openssl'
 require 'net/http'
 
-Dir[File.join(File.dirname(__FILE__), '/helpers/*.rb')].each { |file| require file }
+require_relative 'helpers/instance_helper'
 
 module UNITY_SDK
     class Client
@@ -29,10 +29,7 @@ module UNITY_SDK
             @options['X-EMC-REST-CLIENT'] ||= 'true'
         end
 
-        include LUNHelper
-        include DiskHelper
-        include HostHelper
-        include HostLUNHelper
+        include InstanceHelper
 
         private
 
@@ -70,6 +67,7 @@ module UNITY_SDK
                 request['Cookie'] = cookie if cookie
                 request.basic_auth(@user, @password)
 
+                @logger.debug("requesting #{uri}")
                 response = http.request(request)
 
                 case response

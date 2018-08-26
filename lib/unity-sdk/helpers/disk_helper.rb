@@ -35,21 +35,8 @@ module UNITY_SDK
         ]
         DISK_QUERY_FIELDS_STR = DISK_QUERY_FIELDS.join(',')
 
-        def get_disks
-            response = rest_get('/api/types/disk/instances/')
-            entries = response_handler(response)['entries']
-
-            disks = Array.new
-            entries.each do |entry|
-                disks.push(entry['content']['id'])
-            end
-            disks
+        def get_disk(id = nil, fields = DISK_QUERY_FIELDS_STR)
+            return get_instance('disk', fields, id)
         end
-
-        def get_disk(id)
-            response = rest_get("/api/instances/disk/#{id}?fields=#{DISK_QUERY_FIELDS_STR}")
-            response_handler(response)['content']
-        end
-
     end
 end
