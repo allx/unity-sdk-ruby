@@ -1,5 +1,5 @@
 module UNITY_SDK
-    module LUNQueryHelper
+    module LUNHelper
         LUN_QUERY_FIELDS = [
             'id',
             'health',

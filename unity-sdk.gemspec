@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
       "lib/unity-sdk/version.rb",
       "lib/unity-sdk/client.rb",
       "lib/unity-sdk.rb",
-      "lib/unity-sdk/helpers/lun_query_helper.rb",
+      "lib/unity-sdk/helpers/lun_helper.rb",
       "lib/unity-sdk/helpers/disk_helper.rb"
   ]
   spec.license       = 'MIT'

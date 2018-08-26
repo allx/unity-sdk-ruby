@@ -29,7 +29,7 @@ module UNITY_SDK
             @options['X-EMC-REST-CLIENT'] ||= 'true'
         end
 
-        include LUNQueryHelper
+        include LUNHelper
         include DiskHelper
 
         private
