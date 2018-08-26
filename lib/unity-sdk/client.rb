@@ -4,6 +4,8 @@ require 'logger'
 require 'openssl'
 require 'net/http'
 
+Dir[File.join(File.dirname(__FILE__), '/helpers/*.rb')].each { |file| require file }
+
 module UNITY_SDK
     class Client
         def initialize(options = {})
@@ -27,16 +29,18 @@ module UNITY_SDK
             @options['X-EMC-REST-CLIENT'] ||= 'true'
         end
 
-        def get_luns
-            response = rest_get('/api/types/lun/instances/')
-            response_handler(response)
-        end
-
         def get_disks
             response = rest_get('/api/types/disk/instances/')
-            response_handler(response)
+            entries = response_handler(response)['entries']
+
+            disks = Array.new
+            entries.each do |entry|
+                disks.push(entry['content']['id'])
+            end
+            disks
         end
 
+        include LUNQueryHelper
         private
 
         def response_handler(response)
