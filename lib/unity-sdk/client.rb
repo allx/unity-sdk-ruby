@@ -31,6 +31,8 @@ module UNITY_SDK
 
         include LUNHelper
         include DiskHelper
+        include HostHelper
+        include HostLUNHelper
 
         private
 

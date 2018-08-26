@@ -12,7 +12,9 @@ Gem::Specification.new do |spec|
       "lib/unity-sdk/client.rb",
       "lib/unity-sdk.rb",
       "lib/unity-sdk/helpers/lun_helper.rb",
-      "lib/unity-sdk/helpers/disk_helper.rb"
+      "lib/unity-sdk/helpers/disk_helper.rb",
+      "lib/unity-sdk/helpers/host_helper.rb",
+      "lib/unity-sdk/helpers/hostlun_helper.rb"
   ]
   spec.license       = 'MIT'
 
