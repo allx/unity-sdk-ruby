@@ -20,3 +20,10 @@ Health_Enum = {
     25 => 'CRITICAL',
     30 => 'NON_RECOVERABLE'
 }
+
+HostLUN_Type_Enum = {
+    0 => 'Unknown',
+    1 => 'LUN',
+    2 => 'LUN_Snap'
+}
+
