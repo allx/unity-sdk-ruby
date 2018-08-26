@@ -84,3 +84,9 @@ SNMP_Privacy_Protocol_Enum = {
     2 => 'DES'
 }
 
+DNS_Server_Origin_Enum = {
+    0 => 'Unknown',
+    1 => 'Static',
+    2 => 'DHCP'
+}
+
