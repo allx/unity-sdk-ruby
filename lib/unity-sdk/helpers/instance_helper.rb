@@ -25,6 +25,7 @@ module UNITY_SDK
         include SnmpHelper
         include DnsHelper
         include NtpHelper
+        include BasicSystemInfoHelper
 
     end
 end

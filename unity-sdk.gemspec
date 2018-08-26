@@ -18,7 +18,8 @@ Gem::Specification.new do |spec|
       "lib/unity-sdk/helpers/hostlun_helper.rb",
       "lib/unity-sdk/helpers/snmp_helper.rb",
       "lib/unity-sdk/helpers/dns_helper.rb",
-      "lib/unity-sdk/helpers/ntp_helper.rb"
+      "lib/unity-sdk/helpers/ntp_helper.rb",
+      "lib/unity-sdk/helpers/basic_system_info_helper.rb"
   ]
   spec.license       = 'MIT'
 
