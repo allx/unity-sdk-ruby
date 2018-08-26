@@ -24,6 +24,7 @@ module UNITY_SDK
         include HostLUNHelper
         include SnmpHelper
         include DnsHelper
+        include NtpHelper
 
     end
 end
