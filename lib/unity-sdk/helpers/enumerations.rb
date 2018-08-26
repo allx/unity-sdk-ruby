@@ -65,3 +65,22 @@ Host_Registration_Type_Enum = {
     1 => 'MANUAL',
     2 => 'EXSAUTO'
 }
+
+SNMP_Version_Enum = {
+    1 => 'v1',
+    2 => 'v2c',
+    3 => 'v3'
+}
+
+SNMP_Auth_Protocol_Enum = {
+    0 => 'None',
+    1 => 'MD5',
+    2 => 'SHA'
+}
+
+SNMP_Privacy_Protocol_Enum = {
+    0 => 'None',
+    1 => 'AES',
+    2 => 'DES'
+}
+
