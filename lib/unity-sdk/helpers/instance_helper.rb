@@ -45,6 +45,7 @@ module UNITY_SDK
         include DnsHelper
         include NtpHelper
         include BasicSystemInfoHelper
+        include SwVersionHelper
 
     end
 end
