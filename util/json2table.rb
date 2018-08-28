@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'set'
-require 'json'
 
 def get_header(headers, hash, prefix = nil)
     prefix = "#{prefix}/" if prefix
@@ -40,5 +39,3 @@ def json_to_table(json, css = nil)
     return headers, data
 end
 
-json = JSON.parse(File.read(ARGV[0]))
-headers, data = json_to_table(json)
