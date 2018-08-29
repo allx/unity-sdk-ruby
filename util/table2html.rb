@@ -68,6 +68,10 @@ class HTML_builder
         @doc.at(path).add_child(content)
     end
 
+    def write(path)
+        File.open(path, 'w') { |f| f.write(@doc.to_html) }
+    end
+
     private
 
     def apply_css_pure(table_name)
