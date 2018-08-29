@@ -25,7 +25,7 @@ def get_row(headers, hash)
     return row
 end
 
-def json_to_table(json, css = nil)
+def json_to_table(json)
     return nil unless json
     headers = Set.new
     data = Array.new
